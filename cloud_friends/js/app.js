@@ -306,39 +306,14 @@ const navTosignIn = () => {
   console.log("sign in");
   var cognitoUser = userPool.getCurrentUser();
   if (cognitoUser !== null) {
-    location.href = "friends.html";
+    location.href = "files.html";
   } else {
     location.href = "signin.html";
   }
 };
 
 
-
-
-
-// const loadObjects = () => {
-
-//   const xhr = new XMLHttpRequest();
-
-//   xhr.open('GET', 'https://oeghxxq0hg.execute-api.us-east-1.amazonaws.com/list');
-
-//   // set response format
-//   xhr.responseType = 'json';
-
-//   xhr.send();
-
-//   xhr.onload = () => {
-//       // get JSON response
-//       const response = xhr.response;
-
-//       // log details
-//       console.log('###########');
-//       console.log(response); // John Doe
-//       console.log('###########');
-//   }
-// };
-
-const loadObjectsV2 = () => {
+const loadObjects = () => {
   getJWTToken(function (token) {
     apiClient.listGet({}, null, { headers: { Authorization: token } })
       .then(function (result) {
