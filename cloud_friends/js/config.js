@@ -1,4 +1,5 @@
 var poolData = {
-    UserPoolId: "us-west-xxxxxx", // Please provide yours
-    ClientId: "4ckbanaxxxxxxxxxx", // Please provide yours
+    UserPoolId: "us-east-1_TYUUthkTZ", // Please provide yours
+    ClientId: "v2jca36r2pk7uddsv2nd29s1f", // Please provide yours
   };
+

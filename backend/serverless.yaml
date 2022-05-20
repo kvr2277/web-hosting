@@ -1,0 +1,23 @@
+service: serverless-http-api-dynamodb
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  lambdaHashingVersion: '20201221'
+  httpApi:
+    cors: true
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - s3:*
+          Resource: "arn:aws:s3:::vinod-web-hosting"
+
+functions:
+  listObjects:
+    handler: s3Helper.get
+    events:
+      - httpApi:
+          path: /list
+          method: get

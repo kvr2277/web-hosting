@@ -53,7 +53,7 @@ apigClientFactory.newClient = function (config) {
 
     
     // extract endpoint and path from url
-    var invokeUrl = 'https://d1hql2w552.execute-api.us-west-1.amazonaws.com/Production';
+    var invokeUrl = 'https://i12kw7qqtk.execute-api.us-east-1.amazonaws.com/Production';
     var endpoint = /(^https?:\/\/[^\/]+)/g.exec(invokeUrl)[1];
     var pathComponent = invokeUrl.substring(endpoint.length);
 
@@ -83,93 +83,57 @@ apigClientFactory.newClient = function (config) {
     
     
     
-    apigClient.chatsGet = function (params, body, additionalParams) {
+    apigClient.keysGet = function (params, body, additionalParams) {
         if(additionalParams === undefined) { additionalParams = {}; }
         
-        apiGateway.core.utils.assertParametersDefined(params, ['sender_receiver'], ['body']);
+        apiGateway.core.utils.assertParametersDefined(params, [], ['body']);
         
-        var chatsGetRequest = {
+        var keysGetRequest = {
             verb: 'get'.toUpperCase(),
-            path: pathComponent + uritemplate('/chats').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
-            headers: apiGateway.core.utils.parseParametersToObject(params, []),
-            queryParams: apiGateway.core.utils.parseParametersToObject(params, ['sender_receiver']),
-            body: body
-        };
-        
-        
-        return apiGatewayClient.makeRequest(chatsGetRequest, authType, additionalParams, config.apiKey);
-    };
-    
-    
-    apigClient.chatsPost = function (params, body, additionalParams) {
-        if(additionalParams === undefined) { additionalParams = {}; }
-        
-        apiGateway.core.utils.assertParametersDefined(params, ['body'], ['body']);
-        
-        var chatsPostRequest = {
-            verb: 'post'.toUpperCase(),
-            path: pathComponent + uritemplate('/chats').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
+            path: pathComponent + uritemplate('/keys').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
             headers: apiGateway.core.utils.parseParametersToObject(params, []),
             queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
             body: body
         };
         
         
-        return apiGatewayClient.makeRequest(chatsPostRequest, authType, additionalParams, config.apiKey);
+        return apiGatewayClient.makeRequest(keysGetRequest, authType, additionalParams, config.apiKey);
     };
     
     
-    apigClient.chatsOptions = function (params, body, additionalParams) {
+    apigClient.keysOptions = function (params, body, additionalParams) {
         if(additionalParams === undefined) { additionalParams = {}; }
         
         apiGateway.core.utils.assertParametersDefined(params, [], ['body']);
         
-        var chatsOptionsRequest = {
+        var keysOptionsRequest = {
             verb: 'options'.toUpperCase(),
-            path: pathComponent + uritemplate('/chats').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
+            path: pathComponent + uritemplate('/keys').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
             headers: apiGateway.core.utils.parseParametersToObject(params, []),
             queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
             body: body
         };
         
         
-        return apiGatewayClient.makeRequest(chatsOptionsRequest, authType, additionalParams, config.apiKey);
+        return apiGatewayClient.makeRequest(keysOptionsRequest, authType, additionalParams, config.apiKey);
     };
     
     
-    apigClient.usersGet = function (params, body, additionalParams) {
+    apigClient.proxyOptions = function (params, body, additionalParams) {
         if(additionalParams === undefined) { additionalParams = {}; }
         
         apiGateway.core.utils.assertParametersDefined(params, [], ['body']);
         
-        var usersGetRequest = {
-            verb: 'get'.toUpperCase(),
-            path: pathComponent + uritemplate('/users').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
-            headers: apiGateway.core.utils.parseParametersToObject(params, []),
-            queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
-            body: body
-        };
-        
-        
-        return apiGatewayClient.makeRequest(usersGetRequest, authType, additionalParams, config.apiKey);
-    };
-    
-    
-    apigClient.usersOptions = function (params, body, additionalParams) {
-        if(additionalParams === undefined) { additionalParams = {}; }
-        
-        apiGateway.core.utils.assertParametersDefined(params, [], ['body']);
-        
-        var usersOptionsRequest = {
+        var proxyOptionsRequest = {
             verb: 'options'.toUpperCase(),
-            path: pathComponent + uritemplate('/users').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
+            path: pathComponent + uritemplate('/{proxy+}').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
             headers: apiGateway.core.utils.parseParametersToObject(params, []),
             queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
             body: body
         };
         
         
-        return apiGatewayClient.makeRequest(usersOptionsRequest, authType, additionalParams, config.apiKey);
+        return apiGatewayClient.makeRequest(proxyOptionsRequest, authType, additionalParams, config.apiKey);
     };
     
 

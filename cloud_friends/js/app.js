@@ -143,6 +143,29 @@ const loadUsers = () => {
   });
 };
 
+
+const loadObjects = () => {
+
+  const xhr = new XMLHttpRequest();
+
+  xhr.open('GET', 'https://oeghxxq0hg.execute-api.us-east-1.amazonaws.com/list');
+
+  // set response format
+  xhr.responseType = 'json';
+
+  xhr.send();
+
+  xhr.onload = () => {
+      // get JSON response
+      const response = xhr.response;
+
+      // log details
+      console.log('###########');
+      console.log(response); // John Doe
+      console.log('###########');
+  }
+};
+
 function refresh(){
   const userBtn = document.querySelector(".user");
   var cognitoUser = userPool.getCurrentUser();
